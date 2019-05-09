@@ -4,6 +4,10 @@ import Global from './theme/global';
 
 const getAccount = () => import('./theme/account');
 const getLogin = () => import('./theme/auth');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import BrandsPage from './brandsPage/brandsPage.jsx';
+
 const noop = null;
 
 const pageClasses = {
@@ -96,3 +100,5 @@ window.stencilBootstrap = function stencilBootstrap(pageType, contextJSON = null
         },
     };
 };
+
+ReactDOM.render(React.createElement(BrandsPage),document.getElementById('brandsPage'));
