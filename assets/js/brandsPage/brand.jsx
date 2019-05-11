@@ -1,11 +1,47 @@
-import React from 'react';
+import React from "react";
 
 const Brand = props => (
-    <div className="card" style={{ width: "18rem" }}>
-        <div className="card-body">
-            <h5 className="card-title">{props.brand.name}</h5>
-        </div>
-    </div>
-)
-
-export default Brand
+  <li className="brand">
+    <article className="card">
+      <figure className="card-figure">
+        <a
+          href={`https://williamkwon1557511214-testly-the-third.my-integration.zone/${
+            props.data.path
+          }`}
+        >
+          <div className="card-img-container">
+            <img
+              className="card-image lazyautosizes lazyloaded"
+              data-sizes="auto"
+              src={
+                props.data.images.length
+                  ? props.data.images[0].url
+                  : "https://cdn3-gi.bigcommerce.com/s-klr6znai2j/stencil/23c06820-5577-0137-7af7-0242ac110026/img/BrandDefault.gif"
+              }
+              data-src={
+                props.data.images.length
+                  ? props.data.images[0].url
+                  : "https://cdn3-gi.bigcommerce.com/s-klr6znai2j/stencil/23c06820-5577-0137-7af7-0242ac110026/img/BrandDefault.gif"
+              }
+              alt={props.data.images.length ? props.data.images[0].altText : ""}
+              title={props.data.name}
+              sizes="200px"
+            />
+          </div>
+        </a>
+      </figure>
+      <div className="card-body">
+        <h4 className="card-title">
+          <a
+            href={`https://my-dev-store-610366255.store.bcdev/${
+              props.data.path
+            }`}
+          >
+            {props.data.name}
+          </a>
+        </h4>
+      </div>
+    </article>
+  </li>
+);
+export default Brand;

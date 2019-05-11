@@ -1,51 +1,42 @@
-import React from 'react';
-import {Query, ApolloProvider} from 'react-apollo';
-import gql from 'graphql-tag';
-import {ApolloClient} from 'apollo-boost';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
-import Brand from './brand.jsx';
-const link = new HttpLink({
-  uri: 'https://my-dev-store-610366255.store.bcdev/graphql',
-});
-const apolloClient = new ApolloClient({
-  cache: new InMemoryCache(),
-  link
-});
-const GET_BRANDS=gql`
-{
-  site {
-    brands {
-      pageInfo{
-        hasNextPage
-        hasPreviousPage
-        startCursor
-        endCursor
-      }
-      edges {
-        node {
-          name
-          images {
-            path
-            url(width:200,height:200),
-            altText
-          }
+import React from "react";
+import { Query, ApolloProvider } from "react-apollo";
+import BrandsList from "./brandsList.jsx";
+import apolloClient from "./apolloClient.js";
+import GET_BRANDS from "./brandsQuery.js";
+
+const BrandsPage = () => (
+  <ApolloProvider client={apolloClient}>
+    <Query query={GET_BRANDS}>
+      {({ data, loading, error, fetchMore }) => {
+        if (loading) return <div>Loading brands to memory...</div>;
+        if (error) return <div>{error.message}</div>;
+        if (data.site.brands.pageInfo.hasNextPage) {
+          fetchMore({
+            variables: {
+              cursor:
+                data.site.brands.edges[data.site.brands.edges.length - 1].cursor
+            },
+            updateQuery: (previousResult, { fetchMoreResult }) => {
+              const combinedData = {
+                site: {
+                  brands: {
+                    pageInfo: fetchMoreResult.site.brands.pageInfo,
+                    edges: [
+                      ...previousResult.site.brands.edges,
+                      ...fetchMoreResult.site.brands.edges
+                    ],
+                    __typename: fetchMoreResult.site.brands.__typename
+                  },
+                  __typename: fetchMoreResult.site.__typename
+                }
+              };
+              return combinedData;
+            }
+          });
         }
-      }
-    }
-  }
-}
-`
-const BrandsPage=()=>{
-    return <ApolloProvider client={apolloClient}>
-            <Query query={GET_BRANDS}>
-            {({ loading, error, data }) => {
-              if (loading) return null;
-              if (error) return `Error! ${error}`;
-              console.log(data.site.brands.edges);
-              return <div>{data.site.brands.edges.map((e,i)=><Brand key={i} brand={e.node}/>)}</div>;
-            }}
-            </Query>
-           </ApolloProvider>
-};
+        return <BrandsList data={data} />;
+      }}
+    </Query>
+  </ApolloProvider>
+);
 export default BrandsPage;
