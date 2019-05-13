@@ -5,7 +5,7 @@ const Brand = props => (
     <article className="card">
       <figure className="card-figure">
         <a
-          href={`https://williamkwon1557511214-testly-the-third.my-integration.zone/${
+          href={`https://williamkwon1557761471-testington.my-integration.zone/${
             props.data.path
           }`}
         >
@@ -16,12 +16,12 @@ const Brand = props => (
               src={
                 props.data.images.length
                   ? props.data.images[0].url
-                  : "https://cdn3-gi.bigcommerce.com/s-klr6znai2j/stencil/23c06820-5577-0137-7af7-0242ac110026/img/BrandDefault.gif"
+                  : "https://cdn3-gi.bigcommerce.com/s-lrxgrolo5v/stencil/23c06820-5577-0137-7af7-0242ac110026/img/BrandDefault.gif"
               }
               data-src={
                 props.data.images.length
                   ? props.data.images[0].url
-                  : "https://cdn3-gi.bigcommerce.com/s-klr6znai2j/stencil/23c06820-5577-0137-7af7-0242ac110026/img/BrandDefault.gif"
+                  : "https://cdn3-gi.bigcommerce.com/s-lrxgrolo5v/stencil/23c06820-5577-0137-7af7-0242ac110026/img/BrandDefault.gif"
               }
               alt={props.data.images.length ? props.data.images[0].altText : ""}
               title={props.data.name}
@@ -33,7 +33,7 @@ const Brand = props => (
       <div className="card-body">
         <h4 className="card-title">
           <a
-            href={`https://my-dev-store-610366255.store.bcdev/${
+            href={`https://williamkwon1557761471-testington.my-integration.zone/${
               props.data.path
             }`}
           >
