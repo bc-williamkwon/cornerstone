@@ -5,7 +5,7 @@ const Brand = props => (
     <article className="card">
       <figure className="card-figure">
         <a
-          href={`https://williamkwon1557761471-testington.my-integration.zone/${
+          href={`https://williamkwon1557773735-testsworthy.my-staging.zone/${
             props.data.path
           }`}
         >
@@ -33,7 +33,7 @@ const Brand = props => (
       <div className="card-body">
         <h4 className="card-title">
           <a
-            href={`https://williamkwon1557761471-testington.my-integration.zone/${
+            href={`https://williamkwon1557773735-testsworthy.my-staging.zone/${
               props.data.path
             }`}
           >
