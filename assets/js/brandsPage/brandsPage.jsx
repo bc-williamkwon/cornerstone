@@ -1,8 +1,8 @@
-import React from "react";
-import { Query, ApolloProvider } from "react-apollo";
-import BrandsList from "./brandsList.jsx";
-import apolloClient from "./apolloClient.js";
-import GET_BRANDS from "./brandsQuery.js";
+import React from 'react';
+import { Query, ApolloProvider } from 'react-apollo';
+import BrandsList from './brandsList.jsx';
+import apolloClient from './apolloClient.js';
+import GET_BRANDS from './brandsQuery.js';
 
 const BrandsPage = () => (
   <ApolloProvider client={apolloClient}>

@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 const GET_BRANDS = gql`
   query BrandsQuery($cursor: String) {
     site {
