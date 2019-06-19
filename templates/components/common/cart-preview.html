@@ -9,8 +9,10 @@
                         {{else}}
                             <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage image 'productthumb_size' (cdn ../../theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
                         {{/if}}
+                        
                     </div>
-
+                    {{#if @root.theme_settings.default_image_gift_certificate}}Hello world {{/if}}
+                    {{#if @root.theme_settings.default_image_product}}Hello world{{/if}}
                     <div class="previewCartItem-content">
                         <span class="previewCartItem-brand">
                             {{brand.name}}

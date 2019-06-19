@@ -71,7 +71,7 @@ window.stencilBootstrap = function stencilBootstrap(pageType, contextJSON = null
                 if (loadGlobal) {
                     Global.load(context);
                 }
-
+                console.log(context.themeSettings);
                 const importPromises = [];
 
                 // Find the appropriate page loader based on pageType
